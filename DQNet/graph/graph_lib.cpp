@@ -21,6 +21,8 @@ int gfeatures_size = 15;									// graph embedding related feature size
  * */
 extern "C" int insert_batch(int min_nodes, int max_nodes)
 {
+	printf("err?");
+
 	srand(112);
 	int node_cnt = 0;
 	printf("err?");
