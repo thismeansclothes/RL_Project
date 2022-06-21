@@ -268,7 +268,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--truncate', required=False, default=1000, type=int)
-    parser.add_argument('--env', required=True)
     parser.add_argument('--device', required=False, default=default_device)
     parser.add_argument('--max_iter', required=False, default=5e5, type=float)
     parser.add_argument('--eval_interval', required=False, default=2000, type=int)
