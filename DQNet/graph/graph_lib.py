@@ -22,7 +22,7 @@ class Graph_Lib(object):
         # embedding update
         self.lib.update_graph_embeddings.argtypes = []
         # getters
-        self.lib.get_node_embed.argtypes = [ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int)]
+        self.lib.get_node_embed.argtypes = [ctypes.POINTER(ctypes.c_int)]
         self.lib.get_node_embed.restype = ctypes.POINTER(ctypes.c_float)
         self.lib.get_graph_embed.argtypes = [ctypes.POINTER(ctypes.c_int)]
         self.lib.get_graph_embed.restype = ctypes.POINTER(ctypes.c_float)
@@ -66,8 +66,7 @@ class Graph_Lib(object):
     def get_node_embed(self):
         # node embedding is retrieved for single graph in batch specified with index
         a = ctypes.c_int(0) # row size of node embedding matrix
-        b = ctypes.c_int(0) # column size of node embedding matrix
-        res = self.lib.get_node_embed(ctypes.byref(a), ctypes.byref(b))
+        res = self.lib.get_node_embed(ctypes.byref(a))
         arr = []
         for r in range(a.value): # all the embedding values are copied to a 2D list named arr
             temp = []
