@@ -102,7 +102,9 @@ def run_sac(
 
     print("where is error")
 
-    colored_arrs =[False]*node_cnts
+    colored_arrs =([False]*node_cnts)
+
+    print("where is error")
 
     max_colors = -1
     done = False
@@ -114,11 +116,14 @@ def run_sac(
         node_embed = obs.get_node_embed()
         graph_embed = obs.get_graph_embed()
 
+        print("where is error")
 
         if(t >= node_cnts):
             done = True
             action = -1
             continue
+
+        print("where is error")
 
         if t < fill_buffer:
             found = False
