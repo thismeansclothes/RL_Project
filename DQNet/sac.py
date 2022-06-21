@@ -99,7 +99,7 @@ def run_sac(
 
     obs.init_node_embeddings()
     obs.init_graph_embeddings()
-    
+
     print("where is error")
 
     colored_arrs =[False]*node_cnts
@@ -203,7 +203,7 @@ def eval_agent(agent, eval_num=5):
     for ep in range(eval_num):
         env = Graph_Lib()
 
-        node_cnts = env.insert_batch(min_nodes, max_nodes)
+        node_cnts = env.insert_batch(1, min_nodes, max_nodes)
 
         env.init_node_embeddings()
         env.init_graph_embeddings()
