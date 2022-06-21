@@ -24,7 +24,7 @@ extern "C" int insert_batch(int batch, int min_nodes, int max_nodes)
 	srand(112);
 	int node_cnt = 0;
 	// Initialization of embedding and coloring vectors with the given sizes as input
-	node_embeds = std::vector<std::vector<float>>(std::vector<float>(nfeatures_size)); //여기까지
+	node_embeds = std::vector<std::vector<float>> (std::vector<float>(nfeatures_size)); //여기까지
 	graph_embeds = std::vector<float>;
 	color_arrs = std::vector<int>;
 
@@ -218,10 +218,14 @@ extern "C" void init_node_embeddings()
  * */
 extern "C" float *get_node_embed(int index, int *row, int *col)
 {	
-	float res[9];
-	for (int i = 0; i < 9; i++)
+	*row = node_embeds.size();
+	*col = node_embeds[0].size();
+
+	float *res = new float [*row];
+
+	for (int i = 0; i < *row; i++)
 	{
-		res[i] = node_embeds[i]; // copying the embedding data to 2D pointer
+		res[i] = node_embeds[i].data(); // copying the embedding data to 2D pointer
 	}
 	return res;
 }
