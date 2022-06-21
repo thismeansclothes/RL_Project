@@ -34,6 +34,7 @@ class Graph_Lib(object):
 
     def insert_batch(self, min_n, max_n):
         # batch many graphs are constructed with nodes in given interval [min_n, max_n]
+        print("where is errors?")
         nodes = self.lib.insert_batch(min_n, max_n)
         return nodes[0]
 

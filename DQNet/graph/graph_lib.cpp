@@ -22,13 +22,11 @@ int gfeatures_size = 15;									// graph embedding related feature size
 extern "C" int* insert_batch(int min_nodes, int max_nodes)
 {
 	srand(112);
-	int *node_cnts = new int[1]
+	int *node_cnts = new int[1];
 	// Initialization of embedding and coloring vectors with the given sizes as input
-	print("where is error?")
 	node_embeds = std::vector<std::vector<float>>(std::vector<float>(nfeatures_size)); //여기까지
-	graph_embeds = std::vector<float>
+	graph_embeds = std::vector<float>;
 	color_arrs = std::vector<int>;
-	print("where is error?")
 
 	int n = rand() % (max_nodes - min_nodes) + min_nodes; 	// vertex count is determined
 	int max_edges = n*(n-1)/4, min_edges = n;				// edge interval is set
@@ -36,16 +34,13 @@ extern "C" int* insert_batch(int min_nodes, int max_nodes)
 	int e = rand() % (max_edges - min_edges) + min_edges;	// edge count is determined
 	Graph g(n, e);											// graph with determined edge and vertex count is created , randomly
 	graphs = g;
-	print("where is error?")
 
 	node_cnts[0] = n;
-	print("where is error?")
 
 	for(int k = 0; k < nfeatures_size; k++) {
 		node_embeds[k] = std::vector<float>(n, 0);
 	}
 	color_arrs = std::vector<int> (n, -1);
-	print("where is error?")
 
 	return node_cnts;
 }
@@ -69,7 +64,7 @@ void normal_params(std::vector<float> &order, float &mean, float &stdev)
 {
     float sum = 0;
     float sq_sum = 0;
-     auto &x : order)
+    for(auto &x : order)
     {
         sum += x;
         sq_sum += x * x;
