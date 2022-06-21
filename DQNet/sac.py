@@ -111,7 +111,11 @@ def run_sac(
 
     # main loop
     start = time.time()
+    print("where is error?")
+
     for t in range(max_iter + 1):
+        print("where is error")
+
         next_obs = obs
         node_embed = obs.get_node_embed()
         graph_embed = obs.get_graph_embed()
