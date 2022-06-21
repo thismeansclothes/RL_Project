@@ -176,6 +176,7 @@ def run_sac(
         if (t >= start_train) and (t % train_interval == 0):
             for _ in range(train_interval):
                 agent.train()
+                print('in train...')
 
         if t % eval_interval == 0:
             eval_score = eval_agent(agent)
