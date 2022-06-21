@@ -218,7 +218,7 @@ extern "C" void init_node_embeddings()
  * */
 extern "C" float *get_node_embed(int index, int *row, int *col)
 {	
-	*row = node_embeds.size();
+	*row = 9;
 	aray = *row;
 	printf("err??");
 
