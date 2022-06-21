@@ -24,7 +24,7 @@ extern "C" int insert_batch(int batch, int min_nodes, int max_nodes)
 	srand(112);
 	int node_cnt = 0;
 	// Initialization of embedding and coloring vectors with the given sizes as input
-	node_embeds = std::vector<std::vector<float>>(std::vector<std::vector<float>>(nfeatures_size)); //여기까지
+	node_embeds = std::vector<std::vector<float>>(std::vector<float>(nfeatures_size)); //여기까지
 	graph_embeds = std::vector<float>;
 	color_arrs = std::vector<int>;
 
