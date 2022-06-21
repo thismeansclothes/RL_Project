@@ -23,7 +23,7 @@ class Graph_Lib(object):
         self.lib.update_graph_embeddings.argtypes = []
         # getters
         self.lib.get_node_embed.argtypes = [ctypes.c_int, ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int)]
-        self.lib.get_node_embed.restype = ctypes.POINTER(ctypes.c_float)
+        self.lib.get_node_embed.restype = ctypes.c_float
         self.lib.get_graph_embed.argtypes = [ctypes.POINTER(ctypes.c_int)]
         self.lib.get_graph_embed.restype = ctypes.POINTER(ctypes.c_float)
         # coloring of batch
