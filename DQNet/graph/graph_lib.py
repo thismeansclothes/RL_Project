@@ -36,7 +36,9 @@ class Graph_Lib(object):
         # batch many graphs are constructed with nodes in given interval [min_n, max_n]
         print("where is errors?")
         nodes = self.lib.insert_batch(min_n, max_n)
-        return nodes[0]
+        print("where is errors?")
+
+        return nodes
 
     def reset_batch(self):
         # values in C++ about the batch are reset

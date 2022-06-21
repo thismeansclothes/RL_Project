@@ -19,10 +19,10 @@ int gfeatures_size = 15;									// graph embedding related feature size
  * Gets batch and a node interval as input. Creates batch many graphs having node count in the given interval and
  * edge count between: 10*num_nodes and (num_nodes)(num_nodes - 1) / 4
  * */
-extern "C" int* insert_batch(int min_nodes, int max_nodes)
+extern "C" int insert_batch(int min_nodes, int max_nodes)
 {
 	srand(112);
-	int *node_cnts = new int[1];
+	int node_cnt = 0;
 	printf("err?");
 	// Initialization of embedding and coloring vectors with the given sizes as input
 	node_embeds = std::vector<std::vector<float>>(std::vector<float>(nfeatures_size)); //여기까지
@@ -37,14 +37,14 @@ extern "C" int* insert_batch(int min_nodes, int max_nodes)
 	graphs = g;
 	printf("err?");
 
-	node_cnts[0] = n;
+	node_cnt = n;
 
 	for(int k = 0; k < nfeatures_size; k++) {
 		node_embeds[k] = std::vector<float>(n, 0);
 	}
 	color_arrs = std::vector<int> (n, -1);
 
-	return node_cnts;
+	return node_cnt;
 }
 
 
