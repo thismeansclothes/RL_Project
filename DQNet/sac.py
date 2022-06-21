@@ -168,7 +168,8 @@ def run_sac(
 
         if done or (step_count == max_ep_len):
             train_logger.writerow([t, ep_reward])
-            obs = env.reset_batch()
+            env.reset_batch()
+            obs = env
             step_count = 0
             ep_reward = 0
 
@@ -207,7 +208,7 @@ def eval_agent(agent, eval_num=5):
         max_colors = -1
         reward = 0
 
-        state = env.reset_batch()
+        state = env
         next_state = state
 
         step_count = 0
@@ -283,7 +284,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     run_sac(
-            args.env,
             max_iter=args.max_iter,
             eval_interval=args.eval_interval,
             start_train=args.start_train,
