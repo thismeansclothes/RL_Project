@@ -11,7 +11,7 @@ import random
 from graph.graph_lib import Graph_Lib
 
 def run_sac(
-            max_iter=1e6,
+            max_iter=500,
             eval_interval=2000,
             start_train=10000,
             train_interval=50,
@@ -271,7 +271,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--truncate', required=False, default=1000, type=int)
     parser.add_argument('--device', required=False, default=default_device)
-    parser.add_argument('--max_iter', required=False, default=5e5, type=float)
+    parser.add_argument('--max_iter', required=False, default=500, type=float)
     parser.add_argument('--eval_interval', required=False, default=2000, type=int)
     parser.add_argument('--render', required=False, default=False, type=bool)
     parser.add_argument('--tau', required=False, default=5e-3, type=float)
