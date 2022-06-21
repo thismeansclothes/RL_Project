@@ -11,7 +11,7 @@ class Graph_Lib(object):
     def __init__(self):
         self.lib = ctypes.cdll.LoadLibrary('./source/lib_graph.so')
         # graph constructors and destructors
-        self.lib.insert_batch.argtypes = [ctypes.c_int, ctypes.c_int]
+        self.lib.insert_batch.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int]
         self.lib.insert_batch.restype = ctypes.c_int
         self.lib.reset_batch.argtypes = []
         self.lib.read_batch.argtypes = [ctypes.c_char_p]
@@ -32,10 +32,10 @@ class Graph_Lib(object):
         
         # self.lib.update_node_embeddings.argtypes = [ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int)]
 
-    def insert_batch(self, min_n, max_n):
+    def insert_batch(self, 1, min_n, max_n):
         # batch many graphs are constructed with nodes in given interval [min_n, max_n]
         print("where is errors?")
-        nodes = self.lib.insert_batch(min_n, max_n)
+        nodes = self.lib.insert_batch(1, min_n, max_n)
         print("where is errors?")
 
         return nodes

@@ -19,7 +19,7 @@ int gfeatures_size = 15;									// graph embedding related feature size
  * Gets batch and a node interval as input. Creates batch many graphs having node count in the given interval and
  * edge count between: 10*num_nodes and (num_nodes)(num_nodes - 1) / 4
  * */
-extern "C" int insert_batch(int min_nodes, int max_nodes)
+extern "C" int insert_batch(int batch, int min_nodes, int max_nodes)
 {
 	printf("err?");
 
