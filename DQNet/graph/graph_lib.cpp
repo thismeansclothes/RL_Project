@@ -8,9 +8,9 @@
 using namespace std;
 
 Graph graphs; 									// holds batch many graphs 
-std::vector<std::vector<float>> node_embeds; 	// holds each node embedding for each batch
-std::vector<float> graph_embeds; 				// holds each graph embedding for each batch
-std::vector<int> color_arrs;					// for each batch, coloring information of all nodes are stored
+std::vector<std::vector<std::vector<float>>> node_embeds; 	// holds each node embedding for each batch
+std::vector<std::vector<float>> graph_embeds; 				// holds each graph embedding for each batch
+std::vector<std::vector<int>> color_arrs;					// for each batch, coloring information of all nodes are stored
 
 int nfeatures_size = 9;										// node embedding related feature size
 int gfeatures_size = 15;									// graph embedding related feature size
@@ -24,9 +24,9 @@ extern "C" int insert_batch(int batch, int min_nodes, int max_nodes)
 	srand(112);
 	int node_cnt = 0;
 	// Initialization of embedding and coloring vectors with the given sizes as input
-	node_embeds = std::vector<std::vector<float>>(std::vector<float>(nfeatures_size)); //여기까지
-	graph_embeds = std::vector<float>;
-	color_arrs = std::vector<int>;
+	node_embeds = std::vector<std::vector<std::vector<float>>>(batch, std::vector<std::vector<float>>(nfeatures_size));
+	graph_embeds = std::vector<std::vector<float>>(batch);
+	color_arrs = std::vector<std::vector<int>>(batch);
 
 	int n = rand() % (max_nodes - min_nodes) + min_nodes; 	// vertex count is determined
 	int max_edges = n*(n-1)/4, min_edges = n;				// edge interval is set
@@ -38,9 +38,9 @@ extern "C" int insert_batch(int batch, int min_nodes, int max_nodes)
 	node_cnt = n;
 
 	for(int k = 0; k < nfeatures_size; k++) {
-		node_embeds[k] = std::vector<float>(n, 0);
+		node_embeds[0][k] = std::vector<float>(n, 0);
 	}
-	color_arrs = std::vector<int> (n, -1);
+	color_arrs[0] = std::vector<int> (n, -1);
 
 	return node_cnt;
 }
@@ -206,10 +206,7 @@ void init_node_embed()
  * */
 extern "C" void init_node_embeddings()
 {
-	for (unsigned int i = 0; i < graphs.size(); i++)
-	{
-		init_node_embed(i);
-	}
+		init_node_embed();
 }
 
 /**
@@ -218,12 +215,12 @@ extern "C" void init_node_embeddings()
  * */
 extern "C" float **get_node_embed(int index, int *row, int *col)
 {
-	*row = node_embeds.size();
-	*col = node_embeds[0].size();
+	*row = node_embeds[0].size();
+	*col = node_embeds[0][0].size();
 	float **res = new float *[*row];
 	for (int i = 0; i < *row; i++)
 	{
-		res[i] = node_embeds[i].data(); // copying the embedding data to 2D pointer
+		res[i] = node_embeds[0][i].data(); // copying the embedding data to 2D pointer
 	}
 	return res;
 }
