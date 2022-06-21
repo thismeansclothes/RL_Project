@@ -1,7 +1,6 @@
 import torch
 from torch.optim import Adam
 import numpy as np
-import gym
 import copy
 
 from buffer import ReplayBuffer
