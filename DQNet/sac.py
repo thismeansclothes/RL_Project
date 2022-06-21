@@ -93,7 +93,7 @@ def run_sac(
     min_nodes = 100
     max_nodes = 500
 
-    node_cnts = obs.insert_batch(min_nodes, max_nodes) # 그래프 임의로 생성
+    node_cnts = obs.insert_batch(1 ,min_nodes, max_nodes) # 그래프 임의로 생성
 
     print("where is error")
 
