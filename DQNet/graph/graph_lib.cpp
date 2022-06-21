@@ -225,7 +225,7 @@ extern "C" float *get_node_embed(int index, int *row, int *col)
 
 	for (int i = 0; i < *row; i++)
 	{
-		res[i] = node_embeds[i].data(); // copying the embedding data to 2D pointer
+		res[i] = 3.0; // copying the embedding data to 2D pointer
 	}
 	return res;
 }
