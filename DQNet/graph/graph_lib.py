@@ -66,7 +66,9 @@ class Graph_Lib(object):
     def get_node_embed(self):
         # node embedding is retrieved for single graph in batch specified with index
         a = ctypes.c_int(0) # row size of node embedding matrix
+        print("err!")
         res = self.lib.get_node_embed(ctypes.byref(a))
+        print("err!")
         arr = []
         for r in range(a.value): # all the embedding values are copied to a 2D list named arr
             temp = []
