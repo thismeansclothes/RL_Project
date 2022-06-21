@@ -218,8 +218,6 @@ extern "C" void init_node_embeddings()
  * */
 extern "C" float *get_node_embed(int index, int *row, int *col)
 {	
-	*row = node_embeds.size();
-	*col = node_embeds[0].size();
 
 	float *res = new float [*row];
 
