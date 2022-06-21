@@ -217,10 +217,12 @@ extern "C" void init_node_embeddings()
  * Row and Col values stands for the sizes of node embedding matrix
  * */
 extern "C" float *get_node_embed(int index, int *row, int *col)
-{
+{	
 	*row = node_embeds.size();
+	aray = *row;
+	printf("err??");
 
-	float *res = new float [*row];
+	float *res = new float [aray];
 	for (int i = 0; i < *row; i++)
 	{
 		res[i] = node_embeds[i].data(); // copying the embedding data to 2D pointer
