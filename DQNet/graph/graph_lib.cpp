@@ -23,7 +23,7 @@ extern "C" int* insert_batch(int min_nodes, int max_nodes)
 {
 	srand(112);
 	int *node_cnts = new int[1];
-	printf("err?")
+	printf("err?");
 	// Initialization of embedding and coloring vectors with the given sizes as input
 	node_embeds = std::vector<std::vector<float>>(std::vector<float>(nfeatures_size)); //여기까지
 	graph_embeds = std::vector<float>;
@@ -35,7 +35,7 @@ extern "C" int* insert_batch(int min_nodes, int max_nodes)
 	int e = rand() % (max_edges - min_edges) + min_edges;	// edge count is determined
 	Graph g(n, e);											// graph with determined edge and vertex count is created , randomly
 	graphs = g;
-	printf("err?")
+	printf("err?");
 
 	node_cnts[0] = n;
 
