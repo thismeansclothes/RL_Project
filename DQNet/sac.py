@@ -116,7 +116,7 @@ def run_sac(
     for t in range(max_iter + 1):
         print("where is error")
 
-        next_obs = obs
+        next_obs = copy.deepcopy(obs).to(device)
         node_embed = obs.get_node_embed()
         graph_embed = obs.get_graph_embed()
 
