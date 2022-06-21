@@ -218,7 +218,7 @@ extern "C" void init_node_embeddings()
  * */
 extern "C" float *get_node_embed(int index, int *row, int *col)
 {	
-	float res[9]
+	float res[9];
 	for (int i = 0; i < 9; i++)
 	{
 		res[i] = node_embeds[i].data(); // copying the embedding data to 2D pointer
