@@ -12,7 +12,7 @@ class Graph_Lib(object):
         self.lib = ctypes.cdll.LoadLibrary('./source/lib_graph.so')
         # graph constructors and destructors
         self.lib.insert_batch.argtypes = [ctypes.c_int, ctypes.c_int]
-        self.lib.insert_batch.restype = [ctypes.c_int]
+        self.lib.insert_batch.restype = ctypes.c_int
         self.lib.reset_batch.argtypes = []
         self.lib.read_batch.argtypes = [ctypes.c_char_p]
         self.lib.read_batch.restype = ctypes.POINTER(ctypes.c_int)
