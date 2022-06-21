@@ -216,10 +216,10 @@ extern "C" void init_node_embeddings()
  * For single graph in batch, node embeddings are returned
  * Row and Col values stands for the sizes of node embedding matrix
  * */
-extern "C" float *get_node_embed(int *row)
+extern "C" float *get_node_embed(int index, int *row, int *col)
 {
 	*row = node_embeds.size();
-	
+
 	float *res = new float [*row];
 	for (int i = 0; i < *row; i++)
 	{
