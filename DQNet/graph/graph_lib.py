@@ -12,7 +12,7 @@ class Graph_Lib(object):
         self.lib = ctypes.cdll.LoadLibrary('./source/lib_graph.so')
         # graph constructors and destructors
         self.lib.insert_batch.argtypes = [ctypes.c_int, ctypes.c_int]
-        self.lib.insert_batch.restype = ctypes.c_int
+        self.lib.insert_batch.restype = [ctypes.c_int]
         self.lib.reset_batch.argtypes = []
         self.lib.read_batch.argtypes = [ctypes.c_char_p]
         self.lib.read_batch.restype = ctypes.POINTER(ctypes.c_int)
@@ -35,7 +35,7 @@ class Graph_Lib(object):
     def insert_batch(self, min_n, max_n):
         # batch many graphs are constructed with nodes in given interval [min_n, max_n]
         nodes = self.lib.insert_batch(min_n, max_n)
-        return nodes
+        return nodes[0]
 
     def reset_batch(self):
         # values in C++ about the batch are reset
