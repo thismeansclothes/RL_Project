@@ -79,9 +79,12 @@ def run_sac(
     train_logger = csv.writer(train_log)
     eval_logger = csv.writer(eval_log)
 
+    print("where is error")
     with open(path + '.txt', 'w') as f:
         for key, val in params.items():
             print(key, '=', val, file=f)
+
+    print("where is error")
 
     obs = env
     step_count = 0
@@ -91,28 +94,26 @@ def run_sac(
     max_nodes = 500
 
     node_cnts = obs.insert_batch(min_nodes, max_nodes) # 그래프 임의로 생성
-    
+
     print("where is error")
 
     obs.init_node_embeddings()
     obs.init_graph_embeddings()
+    
     print("where is error")
 
     colored_arrs =[False]*node_cnts
 
     max_colors = -1
     done = False
-    print("where is error1")
 
     # main loop
     start = time.time()
     for t in range(max_iter + 1):
-        print("where is error2")
         next_obs = obs
         node_embed = obs.get_node_embed()
         graph_embed = obs.get_graph_embed()
 
-        print("where is error")
 
         if(t >= node_cnts):
             done = True
@@ -181,7 +182,6 @@ def run_sac(
         if (t >= start_train) and (t % train_interval == 0):
             for _ in range(train_interval):
                 agent.train()
-                print('in train...')
 
         if t % eval_interval == 0:
             eval_score = eval_agent(agent)
